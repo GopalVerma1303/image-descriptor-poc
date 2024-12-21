@@ -1,4 +1,4 @@
-# Image Description Web Application
+# Image Descriptor POC Application
 
 This web application allows users to upload an image and receive a text description of its content using a pre-trained image classification model from Hugging Face.
 
