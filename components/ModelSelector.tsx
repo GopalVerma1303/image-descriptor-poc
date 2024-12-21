@@ -22,6 +22,21 @@ export const models = [
     name: "ViT-GPT2",
     task: "image-to-text",
   },
+  {
+    id: "Salesforce/blip-image-captioning-base",
+    name: "BLIP Base",
+    task: "image-to-text",
+  },
+  {
+    id: "microsoft/git-base-coco",
+    name: "GIT Base COCO",
+    task: "image-to-text",
+  },
+  {
+    id: "ydshieh/vit-gpt2-coco-en",
+    name: "ViT-GPT2 COCO",
+    task: "image-to-text",
+  },
 ];
 
 interface ModelSelectorProps {

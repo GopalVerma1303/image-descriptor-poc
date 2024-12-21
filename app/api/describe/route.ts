@@ -6,7 +6,7 @@ const hf = new HfInference(process.env.HUGGINGFACE_API_KEY);
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
-    const image = formData.get("image") as Blob | null;
+    const image = formData.get("image") as File | null;
     const model = formData.get("model") as string;
     const maxLength = parseInt(formData.get("maxLength") as string);
 
@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No image provided" }, { status: 400 });
     }
 
+    // Convert the File to a Blob and then to an ArrayBuffer
     const imageBuffer = await image.arrayBuffer();
 
     const result = await hf.imageToText({
@@ -27,6 +28,7 @@ export async function POST(req: NextRequest) {
     if (result && result.generated_text) {
       return NextResponse.json({ description: result.generated_text });
     } else {
+      console.error("Unexpected response structure:", result);
       return NextResponse.json(
         { error: "Failed to generate description" },
         { status: 500 },
@@ -35,7 +37,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error describing image:", error);
     return NextResponse.json(
-      { error: "Failed to describe image" },
+      { error: "Failed to describe image", details: (error as Error).message },
       { status: 500 },
     );
   }
