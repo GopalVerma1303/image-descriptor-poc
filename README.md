@@ -1,4 +1,4 @@
-# Image Classifier Web Application
+# Image Description Web Application
 
 This web application allows users to upload an image and receive a text description of its content using a pre-trained image classification model from Hugging Face.
 
@@ -20,8 +20,8 @@ This web application allows users to upload an image and receive a text descript
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/image-detector-poc.git
-cd image-detector-poc
+git clone https://github.com/yourusername/image-description-poc.git
+cd image-description-poc
 ```
 
 2. Install dependencies:
